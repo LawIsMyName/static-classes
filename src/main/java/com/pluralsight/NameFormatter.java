@@ -33,4 +33,14 @@ public class NameFormatter {
 
         return formattedName;
     }
+
+    public static String format(String fullName) {
+
+        String[] parts = fullName.trim().split("\\s+");
+
+        String firstName = parts[0];
+        String lastName = parts[parts.length - 1];
+
+        return format(firstName, lastName);
+    }
 }
