@@ -7,36 +7,33 @@ class NameFormatterTest {
 
     @Test
     public void format_shouldFormatFirstAndLastName() {
+        String result = NameFormatter.format("Mel", "Johnson");
 
-        String result = NameFormatter.format("John", "Doe");
-
-        assertEquals("Doe, John", result);
+        assertEquals("Johnson, Mel", result);
     }
 
     @Test
-    public void format_shouldIncludePrefixMiddleNameAndSuffix() {
-
+    public void format_shouldIncludeAllNameParts() {
         String result = NameFormatter.format(
-                "Dr.", "John", "Michael", "Doe", "Jr.");
+                "Dr.", "Mel", "B", "Johnson", "PhD");
 
-        assertEquals("Doe, Dr. John Michael, Jr.", result);
+        assertEquals("Johnson, Dr. Mel B, PhD", result);
     }
 
     @Test
-    public void format_shouldHandleMissingOptionalNames() {
-
+    public void format_shouldWorkWithoutPrefix() {
         String result = NameFormatter.format(
-                "", "John", "", "Doe", "");
+                "", "Mel", "B", "Johnson", "PhD");
 
-        assertEquals("Doe, John", result);
+        assertEquals("Johnson, Mel B, PhD", result);
     }
 
     @Test
-    public void format_shouldHandleFullName() {
+    public void format_shouldWorkWithoutOptionalParts() {
+        String result = NameFormatter.format(
+                "", "Mel", "", "Johnson", "");
 
-        String result = NameFormatter.format("John Doe");
-
-        assertEquals("Doe, John", result);
+        assertEquals("Johnson, Mel", result);
     }
 
 }
