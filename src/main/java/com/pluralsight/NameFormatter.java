@@ -10,4 +10,27 @@ public class NameFormatter {
 
         return lastName + ", " + firstName;
     }
+
+    public static String format(String prefix, String firstName,
+                                String middleName, String lastName,
+                                String suffix) {
+
+        String formattedName = lastName + ", ";
+
+        if (prefix != null && !prefix.isBlank()) {
+            formattedName += prefix + " ";
+        }
+
+        formattedName += firstName;
+
+        if (middleName != null && !middleName.isBlank()) {
+            formattedName += " " + middleName;
+        }
+
+        if (suffix != null && !suffix.isBlank()) {
+            formattedName += ", " + suffix;
+        }
+
+        return formattedName;
+    }
 }
